@@ -1,0 +1,15 @@
+<div class="social-icons" {{ with .align}}align="{{.}}" {{- end }}>
+    {{- range site.Params.socialIcons }}
+    {{- if (eq .url "") -}}
+        <span style="display: inline-flex; height: 24px; margin: 10px;">
+          {{ partial "svg.html" . }}
+          <span style="padding-left: 5px; margin-top: -2px;">{{ .name }}</span>
+        </span>
+    {{- else -}}
+        <a href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer me" title="{{ (.title | default .name) | title }}">
+            {{ partial "svg.html" . }}
+        </a>
+    {{- end }}
+    {{- end }}
+</div>
+
